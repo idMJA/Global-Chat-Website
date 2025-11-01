@@ -10,10 +10,23 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
+import type { ReactElement } from "react";
 
-export default function Home() {
+interface Bot {
+	id: string;
+	name: string;
+	developer: string;
+	description: string;
+	avatar: string;
+	websiteUrl: string;
+	supportUrl: string;
+	cardVariant: "left" | "middle" | "right";
+}
+
+export default function Home(): ReactElement {
 	// Bot data configuration - easy to add new bots here
-	const botsData = [
+	const botsData: Bot[] = [
 		{
 			id: "alya-chan",
 			name: "Alya-chan",
@@ -49,7 +62,7 @@ export default function Home() {
 		},
 	];
 
-	const containerVariants = {
+	const containerVariants: Variants = {
 		hidden: { opacity: 0 },
 		visible: {
 			opacity: 1,
@@ -60,22 +73,22 @@ export default function Home() {
 		},
 	};
 
-	const itemVariants = {
+	const itemVariants: Variants = {
 		hidden: { opacity: 0, y: 50 },
 		visible: { opacity: 1, y: 0 },
 	};
 
-	const cardVariants = {
+	const cardVariants: Variants = {
 		hidden: { opacity: 0, x: -100, rotateY: -15 },
 		visible: { opacity: 1, x: 0, rotateY: 0 },
 	};
 
-	const cardVariantsRight = {
+	const cardVariantsRight: Variants = {
 		hidden: { opacity: 0, x: 100, rotateY: 15 },
 		visible: { opacity: 1, x: 0, rotateY: 0 },
 	};
 
-	const cardVariantsMiddle = {
+	const cardVariantsMiddle: Variants = {
 		hidden: { opacity: 0, y: 100, scale: 0.95 },
 		visible: { opacity: 1, y: 0, scale: 1 },
 	};
@@ -194,7 +207,7 @@ export default function Home() {
 				{/* Bot Cards with staggered entrance */}
 				<div className="flex flex-wrap justify-center gap-12 max-w-6xl">
 					{botsData.map((bot) => {
-						let cardVariantsChoice;
+						let cardVariantsChoice: Variants | undefined;
 						if (bot.cardVariant === "left") {
 							cardVariantsChoice = cardVariants;
 						} else if (bot.cardVariant === "right") {
@@ -213,8 +226,8 @@ export default function Home() {
 										bot.cardVariant === "left"
 											? 1
 											: bot.cardVariant === "right"
-											? -1
-											: 0,
+												? -1
+												: 0,
 									transition: { duration: 0.3 },
 								}}
 								whileTap={{ scale: 0.95 }}
@@ -228,8 +241,8 @@ export default function Home() {
 													bot.cardVariant === "left"
 														? 12
 														: bot.cardVariant === "right"
-														? -12
-														: 0,
+															? -12
+															: 0,
 												scale: 1.03,
 											}}
 											transition={{ duration: 0.5 }}
