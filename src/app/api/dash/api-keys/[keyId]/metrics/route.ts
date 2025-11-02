@@ -4,10 +4,10 @@ import { makeApiRequest, unauthorizedResponse } from "@/lib/request";
 // GET /api/dash/api-keys/[keyId]/metrics - Get API key metrics
 export async function GET(
 	request: NextRequest,
-	{ params }: { params: { keyId: string } },
+	{ params }: { params: Promise<{ keyId: string }> },
 ) {
 	try {
-		const keyId = params.keyId;
+		const { keyId } = await params;
 		const searchParams = request.nextUrl.searchParams;
 		const page = searchParams.get("page") || "1";
 		const limit = searchParams.get("limit") || "50";

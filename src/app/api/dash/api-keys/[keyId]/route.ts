@@ -4,10 +4,10 @@ import { makeApiRequest, unauthorizedResponse } from "@/lib/request";
 // GET /api/dash/api-keys/[keyId] - Get API key detail
 export async function GET(
 	request: NextRequest,
-	{ params }: { params: { keyId: string } },
+	{ params }: { params: Promise<{ keyId: string }> },
 ) {
 	try {
-		const keyId = params.keyId;
+		const { keyId } = await params;
 		const incomingAuth = request.headers.get("authorization") ?? undefined;
 		if (!incomingAuth) return unauthorizedResponse();
 		const data = await makeApiRequest(
@@ -34,10 +34,10 @@ export async function GET(
 // DELETE /api/dash/api-keys/[keyId] - Delete API key
 export async function DELETE(
 	request: NextRequest,
-	{ params }: { params: { keyId: string } },
+	{ params }: { params: Promise<{ keyId: string }> },
 ) {
 	try {
-		const keyId = params.keyId;
+		const { keyId } = await params;
 		const incomingAuth = request.headers.get("authorization") ?? undefined;
 		if (!incomingAuth) return unauthorizedResponse();
 		const data = await makeApiRequest(
@@ -66,10 +66,10 @@ export async function DELETE(
 // PATCH /api/dash/api-keys/[keyId] - Update API key (toggle status)
 export async function PATCH(
 	request: NextRequest,
-	{ params }: { params: { keyId: string } },
+	{ params }: { params: Promise<{ keyId: string }> },
 ) {
 	try {
-		const keyId = params.keyId;
+		const { keyId } = await params;
 		const body = await request.json();
 		const incomingAuth = request.headers.get("authorization") ?? undefined;
 		if (!incomingAuth) return unauthorizedResponse();

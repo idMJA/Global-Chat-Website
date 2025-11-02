@@ -1,7 +1,9 @@
 "use client";
 
+import { Check, Copy, PlusCircle } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
 	Dialog,
 	DialogContent,
@@ -13,10 +15,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import apiService from "@/services/apiService";
-import { PlusCircle, Copy, Check } from "lucide-react";
 
 const AVAILABLE_PERMISSIONS = [
 	{

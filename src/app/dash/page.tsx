@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import apiService from "@/services/apiService";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import apiService from "@/services/apiService";
 
 interface MetricsData {
 	totalRequests: number;

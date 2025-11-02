@@ -1,6 +1,9 @@
 "use client";
 
+import type { Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import type { ReactElement } from "react";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -9,9 +12,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
-import type { ReactElement } from "react";
 
 interface Bot {
 	id: string;

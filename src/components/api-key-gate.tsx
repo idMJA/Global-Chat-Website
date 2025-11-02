@@ -1,8 +1,8 @@
 "use client";
 
-import { ApiKeyProvider, useApiKey } from "@/lib/apiKey";
 import ApiKeyDialog from "@/components/dashboard/api-key-dialog";
 import { Button } from "@/components/ui/button";
+import { ApiKeyProvider, useApiKey } from "@/lib/apiKey";
 
 function ApiKeyControls() {
 	const { apiKey, clearApiKey } = useApiKey();
