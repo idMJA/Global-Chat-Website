@@ -1,7 +1,10 @@
 "use client";
 
+import { Key, MessageSquare } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { StatCard } from "@/components/dashboard/stat-card";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import apiService from "@/services/apiService";
 
@@ -104,6 +107,47 @@ export default function MetricsDashboard() {
 					value={metrics.failedRequests.toLocaleString()}
 					subtitle="Errors and failures"
 				/>
+			</div>
+
+			{/* Quick Access */}
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<Card>
+					<CardHeader>
+						<CardTitle className="flex items-center gap-2">
+							<MessageSquare className="h-5 w-5" />
+							Message Management
+						</CardTitle>
+					</CardHeader>
+					<CardContent className="space-y-3">
+						<p className="text-sm text-muted-foreground">
+							Search and delete messages across all connected servers using
+							flexible message ID lookup.
+						</p>
+						<Link href="/dash/messages">
+							<Button className="w-full">Go to Messages</Button>
+						</Link>
+					</CardContent>
+				</Card>
+
+				<Card>
+					<CardHeader>
+						<CardTitle className="flex items-center gap-2">
+							<Key className="h-5 w-5" />
+							API Key Management
+						</CardTitle>
+					</CardHeader>
+					<CardContent className="space-y-3">
+						<p className="text-sm text-muted-foreground">
+							Create and manage API keys with custom permissions for different
+							access levels.
+						</p>
+						<Link href="/dash/api-keys">
+							<Button className="w-full" variant="outline">
+								Manage API Keys
+							</Button>
+						</Link>
+					</CardContent>
+				</Card>
 			</div>
 
 			{/* Charts Grid */}

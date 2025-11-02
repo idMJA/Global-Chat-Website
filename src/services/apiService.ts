@@ -47,6 +47,32 @@ interface ApiKeyMetrics {
 	};
 }
 
+interface MessageInfo {
+	originalMessageId: string;
+	content: string;
+	author: string;
+	serverMessages: Array<{
+		guildId: string;
+		messageId: string;
+	}>;
+	totalServers: number;
+}
+
+interface DeleteMessageResponse {
+	status: string;
+	message: string;
+	data: {
+		originalMessageId: string;
+		totalServers: number;
+		successCount: number;
+		failedCount: number;
+		errors?: Array<{
+			guildId: string;
+			error: string;
+		}>;
+	};
+}
+
 export class APIManagementService {
 	private apiUrl: string;
 
@@ -141,6 +167,17 @@ export class APIManagementService {
 		return this.request<{ data: ApiKeyMetrics }>(
 			`/api-keys/${keyId}/metrics?page=${page}&limit=${limit}&hoursBack=${hoursBack}`,
 		);
+	}
+
+	// Message Management
+	async getMessageInfo(messageId: string) {
+		return this.request<{ data: MessageInfo }>(`/messages/${messageId}`);
+	}
+
+	async deleteMessage(messageId: string) {
+		return this.request<DeleteMessageResponse>(`/messages/${messageId}`, {
+			method: "DELETE",
+		});
 	}
 }
 

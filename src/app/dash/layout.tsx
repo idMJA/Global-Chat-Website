@@ -11,6 +11,7 @@ interface DashboardLayoutProps {
 const navigation = [
 	{ name: "Overview", href: "/dash" },
 	{ name: "API Keys", href: "/dash/api-keys" },
+	{ name: "Messages", href: "/dash/messages" },
 ];
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
