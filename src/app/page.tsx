@@ -273,9 +273,8 @@ export default function Home(): ReactElement {
 												whileTap={{ scale: 0.95 }}
 											>
 												<Button
-													variant="outline"
 													size="sm"
-													className="bg-white text-black border-white hover:bg-gray-200 hover:text-black font-medium px-6 transition-all duration-300 hover:shadow-lg"
+													className="bg-white text-black border border-white hover:bg-white/90 hover:text-black font-semibold px-8 transition-all duration-300 hover:shadow-lg hover:shadow-white/20 active:scale-95"
 													onClick={() => window.open(bot.websiteUrl, "_blank")}
 												>
 													Website
@@ -288,7 +287,7 @@ export default function Home(): ReactElement {
 												<Button
 													variant="outline"
 													size="sm"
-													className="bg-transparent text-white border border-white/20 hover:bg-white hover:text-black font-medium px-6 transition-all duration-300 hover:shadow-lg"
+													className="bg-transparent text-white border-2 border-white hover:bg-white hover:text-black font-semibold px-8 transition-all duration-300 hover:shadow-lg hover:shadow-white/20 active:scale-95"
 													onClick={() => window.open(bot.supportUrl, "_blank")}
 												>
 													Support
