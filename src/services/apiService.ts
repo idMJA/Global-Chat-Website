@@ -51,6 +51,7 @@ interface MessageInfo {
 	originalMessageId: string;
 	content: string;
 	author: string;
+	authorId?: string;
 	serverMessages: Array<{
 		guildId: string;
 		messageId: string;
@@ -178,6 +179,65 @@ export class APIManagementService {
 		return this.request<DeleteMessageResponse>(`/messages/${messageId}`, {
 			method: "DELETE",
 		});
+	}
+
+	// Ban / Unban
+	async banUser(userId: string, reason?: string, duration?: string) {
+		return this.request<{ message: string; data?: Record<string, unknown> }>(
+			`/ban/user`,
+			{
+				method: "POST",
+				body: JSON.stringify({ userId, reason, duration }),
+			},
+		);
+	}
+
+	async banServer(
+		serverId: string,
+		serverName?: string,
+		reason?: string,
+		duration?: string,
+	) {
+		return this.request<{ message: string; data?: Record<string, unknown> }>(
+			`/ban/server`,
+			{
+				method: "POST",
+				body: JSON.stringify({ serverId, serverName, reason, duration }),
+			},
+		);
+	}
+
+	async unbanUser(targetId: string) {
+		return this.request<{ message: string }>(`/unban/user`, {
+			method: "POST",
+			body: JSON.stringify({ targetId }),
+		});
+	}
+
+	async unbanServer(targetId: string) {
+		return this.request<{ message: string }>(`/unban/server`, {
+			method: "POST",
+			body: JSON.stringify({ targetId }),
+		});
+	}
+
+	// Bans listing
+	async getBans() {
+		return this.request<{ data: { bans: Array<Record<string, unknown>> } }>(
+			`/bans`,
+		);
+	}
+
+	async getUserBans() {
+		return this.request<{ data: { bans: Array<Record<string, unknown>> } }>(
+			`/bans/users`,
+		);
+	}
+
+	async getServerBans() {
+		return this.request<{ data: { bans: Array<Record<string, unknown>> } }>(
+			`/bans/servers`,
+		);
 	}
 }
 

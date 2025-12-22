@@ -148,6 +148,25 @@ export default function MetricsDashboard() {
 						</Link>
 					</CardContent>
 				</Card>
+
+				<Card>
+					<CardHeader>
+						<CardTitle className="flex items-center gap-2">
+							<Key className="h-5 w-5" />
+							Bans
+						</CardTitle>
+					</CardHeader>
+					<CardContent className="space-y-3">
+						<p className="text-sm text-muted-foreground">
+							View, ban and unban users or servers.
+						</p>
+						<Link href="/dash/bans">
+							<Button className="w-full" variant="outline">
+								Open Bans Dashboard
+							</Button>
+						</Link>
+					</CardContent>
+				</Card>
 			</div>
 
 			{/* Charts Grid */}

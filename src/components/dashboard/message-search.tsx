@@ -24,6 +24,9 @@ interface MessageInfo {
 	originalMessageId: string;
 	content: string;
 	author: string;
+	authorId?: string;
+	originalGuildId?: string;
+	originalChannelId?: string;
 	serverMessages: Array<{
 		guildId: string;
 		messageId: string;
@@ -59,6 +62,8 @@ export function MessageSearch() {
 	);
 	const [error, setError] = useState<string | null>(null);
 
+	// no ban UI here; only showing authorId
+
 	const handleSearch = async () => {
 		if (!messageId.trim()) {
 			setError("Please enter a message ID");
@@ -74,6 +79,8 @@ export function MessageSearch() {
 		try {
 			const response = await apiService.getMessageInfo(messageId.trim());
 			setMessageInfo(response.data);
+
+			// nothing else to prefill here; we only display authorId
 		} catch (err) {
 			setError(
 				err instanceof Error ? err.message : "Failed to fetch message info",
@@ -82,6 +89,8 @@ export function MessageSearch() {
 			setLoading(false);
 		}
 	};
+
+	// no ban handler in this component
 
 	const handleDelete = async () => {
 		if (!messageId.trim()) return;
@@ -173,13 +182,42 @@ export function MessageSearch() {
 							<p className="font-mono text-sm">
 								{messageInfo.originalMessageId}
 							</p>
+
+							{messageInfo.originalGuildId && (
+								<div className="mt-2">
+									<p className="text-xs text-muted-foreground">
+										Original Guild
+									</p>
+									<p className="font-mono text-sm">
+										{messageInfo.originalGuildId}
+									</p>
+								</div>
+							)}
+
+							{messageInfo.originalChannelId && (
+								<div className="mt-2">
+									<p className="text-xs text-muted-foreground">
+										Original Channel
+									</p>
+									<p className="font-mono text-sm">
+										{messageInfo.originalChannelId}
+									</p>
+								</div>
+							)}
 						</div>
 
 						<div>
 							<p className="text-sm font-medium text-muted-foreground">
 								Author
 							</p>
-							<p className="text-sm">{messageInfo.author}</p>
+							<div className="flex items-center gap-2">
+								<p className="text-sm">{messageInfo.author}</p>
+								{messageInfo.authorId && (
+									<span className="text-xs font-mono text-muted-foreground">
+										{messageInfo.authorId}
+									</span>
+								)}
+							</div>
 						</div>
 
 						<div>
@@ -209,11 +247,13 @@ export function MessageSearch() {
 							</div>
 						</div>
 
+						{/* authorId displayed above; no ban UI here */}
+
 						<Button
 							onClick={handleDelete}
 							disabled={loading}
 							variant="destructive"
-							className="w-full"
+							className="w-full mt-4"
 						>
 							<Trash2 className="mr-2 h-4 w-4" />
 							Delete from All Servers
