@@ -43,9 +43,9 @@ export default function Home(): ReactElement {
 			name: "Yuki Suou",
 			developer: "KH1EV Community",
 			description:
-				"Enjoy the bot to have fun with your Discord server. From imagination to reality featuring AI Chatbot from Meta AI Contribution and use the bot anytime, anywhere, and immerse yourself in the ultimate anime experience!",
+				"Hy I am Yuki Suou featuring a Global Chat Feature and an AI Chatbot with support for Indonesian and various other languages",
 			avatar: "/icon/yuki.png",
-			websiteUrl: "https://yukisuou.xyz",
+			websiteUrl: "https://yukisuou.com",
 			supportUrl: "https://discord.gg/MwNE7Vfb6t",
 			cardVariant: "middle",
 		},
