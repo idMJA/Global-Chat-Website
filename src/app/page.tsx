@@ -310,7 +310,7 @@ export default function Home(): ReactElement {
 					transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
 				>
 					<motion.a
-						href="https://mjba.my"
+						href="https://mja.moe"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="text-gray-500 text-sm transition-all duration-300 hover:text-gray-400 bg-black/40 px-3 py-2 rounded-md backdrop-blur-sm inline-block"
