@@ -1,0 +1,34 @@
+{
+	"members": [
+		{
+			"id": "1260252174861074442",
+			"name": "Alya-chan",
+			"developer": "Tronix Developments",
+			"description": "The versatile bot with everything you need! Advanced multipurpose bot with AI features, auto-moderation, and comprehensive server management tools.",
+			"avatar": "/members/alya.png",
+			"websiteUrl": "https://alyaa.site",
+			"supportUrl": "https://dc.gg/tx",
+			"cardVariant": "left"
+		},
+		{
+			"id": "1294484671643779073",
+			"name": "Yuki Suou",
+			"developer": "KH1EV Community",
+			"description": "Hy I am Yuki Suou featuring a Global Chat Feature and an AI Chatbot with support for Indonesian and various other languages",
+			"avatar": "/members/yuki.png",
+			"websiteUrl": "https://yukisuou.com",
+			"supportUrl": "https://discord.gg/MwNE7Vfb6t",
+			"cardVariant": "middle"
+		},
+		{
+			"id": "1379246675171999826",
+			"name": "Kythia",
+			"developer": "Kythia Labs",
+			"description": "Meet Kythia Hye-Jin, your cutest and beautiful companion! More than just a bot, she brings your server to life with AI, Music, Economy, and Auto-Moderation to keep it secure.",
+			"avatar": "/members/kythia.png",
+			"websiteUrl": "https://kythia.my.id",
+			"supportUrl": "https://dsc.gg/kythia",
+			"cardVariant": "right"
+		}
+	]
+}
